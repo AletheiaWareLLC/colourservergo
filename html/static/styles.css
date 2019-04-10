@@ -1,0 +1,102 @@
+a {
+    color: grey;
+}
+a:hover {
+    color: darkgrey;
+}
+body {
+    background-color: white;
+    font-family: Helvetica, sans-serif;
+}
+h1 {
+    color: black;
+    font-size: 1.5em;
+    margin-top: 0.6em;
+    margin-bottom: 0.6em;
+    text-align: center;
+}
+h2 {
+    color: black;
+    font-size: 1.4em;
+    margin-top: 0.8em;
+    margin-bottom: 0.8em;
+    text-align: left;
+}
+h3 {
+    color: black;
+    font-size: 1.3em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    text-align: left;
+}
+h4 {
+    color: black;
+    font-size: 1.2em;
+    margin-top: 1.2em;
+    margin-bottom: 1.2em;
+    text-align: left;
+}
+h5 {
+    color: black;
+    font-size: 1.1em;
+    margin-top: 1.4em;
+    margin-bottom: 1.4em;
+    text-align: left;
+}
+h6 {
+    color: black;
+    font-size: 1em;
+    margin-top: 1.6em;
+    margin-bottom: 1.6em;
+    text-align: left;
+}
+p {
+    color: black;
+    text-align: justify;
+}
+p.note {
+    background-color: darkgrey;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px;
+}
+p.subtitle {
+    text-align: center;
+}
+pre {
+    color: darkgrey;
+}
+samp {
+    color: darkgrey;
+}
+table th {
+    color: lightgrey;
+}
+table td {
+    color: black;
+}
+ul {
+    color: black;
+}
+.header {
+    border-bottom: 1px solid black;
+    overflow: hidden;
+    padding-bottom: 10px;
+}
+.header img {
+    display: block;
+    margin: auto;
+}
+.footer {
+    border-top: 1px solid black;
+    overflow: hidden;
+    padding-top: 10px;
+}
+.footer p {
+    text-align: center;
+}
+.content {
+    max-width: 960px;
+    margin: auto;
+    padding: 10px;
+}

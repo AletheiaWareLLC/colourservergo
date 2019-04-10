@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <head>
+        <link rel="stylesheet" href="styles.css">
+        <title>Colour - Aletheia Ware</title>
+    </head>
+
+    <body>
+        <div class="content">
+            <div class="header">
+                <a href="https://aletheiaware.com">
+                    <img src="logo.svg" />
+                </a>
+            </div>
+
+            <h1>Colour</h1>
+            <p class="subtitle">An Exploration of Economic, Financial, Governance, and Social Structures through Collaborative, Blockchain-Backed, Digital Canvases.</p>
+
+            <img src="colour.svg" width="100%" />
+
+            <p>TODO
+                <ul>
+                    <li><strong>1</strong> - hmm?</li>
+                    <li><strong>2</strong> - hmm?</li>
+                    <li><strong>3</strong> - hmm?</li>
+                </ul>
+            </p>
+
+            <h2>Review & Approve</h2>
+            <p>Colour is made available by <a href="https://aletheiaware.com">Aletheia Ware</a> under the <a href="https://aletheiaware.com/terms-of-service.html">Terms of Service</a> and <a href="https://aletheiaware.com/privacy-policy.html">Privacy Policy</a>.</p>
+            <p>Colour is an open-source project released under <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a> and hosted on <a href="https://github.com/AletheiaWareLLC">Github</a>.</p>
+
+            <h2>Download & Install</h2>
+            <p>Get Colour for your device;
+                <ul>
+                    <li>Android - coming soon!<!--<a href="https://play.google.com/apps/testing/com.aletheiaware.colour.android">Open Beta - Google Play Store</a><a download href="SolourAndroid.apk">APK</a> or $1 on <a href="https://play.google.com/store/apps/details?id=com.aletheiaware.colour.android">Google Play Store</a>--></li>
+                    <li>iOS - coming soon!<!--<a download href="Colour"></a>--></li>
+                    <li>JVM - coming soon!<!--<a download href="SolourJVM.jar">JAR</a>--></li>
+                    <li>Linux - ARM (<a download="colour" href="colourclientgo-linux-arm5">v5</a>, <a download="colour" href="colourclientgo-linux-arm6">v6</a>, <a download="colour" href="colourclientgo-linux-arm7">v7</a>, <a download="colour" href="colourclientgo-linux-arm8">v8</a>) or Intel/AMD (<a download="colour" href="colourclientgo-linux-386">32</a>, <a download="colour" href="colourclientgo-linux-amd64">64</a>)</li>
+                    <li>Mac - Intel/AMD (<a download="colour" href="colourclientgo-darwin-386">32</a>, <a download="colour" href="colourclientgo-darwin-amd64">64</a>)</li>
+                    <li>Windows - Intel/AMD (<a download="colour.exe" href="colourclientgo-windows-386.exe">32</a>, <a download="colour.exe" href="colourclientgo-windows-amd64.exe">64</a>)</li>
+                </ul>
+            </p>
+
+            <h2>Register & Subscribe</h2>
+            <p>Generate your key pair consisting of a public key (which will be registered with your account) and a private key (which does not leave your possession).
+                <pre><code>$> ./colour init</code></pre>
+                <samp>
+                    Creating keystore under /Users/<strong>username</strong>/bc
+                    <br/>
+                    Enter keystore password:
+                    <br/>
+                    Confirm keystore password:
+                    <br/>
+                    Generating RSA 4096 Public/Private Key Pair
+                    <br/>
+                    Successfully Created Key Pair
+                    <br/>
+                    ...
+                    <br/>
+                    ...
+                    <br/>
+                    Initialized as <strong>username</strong>
+                    <br>
+                </samp>
+            </p>
+
+            <p>When you create an Aletheia Ware account with a unique alias and a password of at least 12 characters, a 4096bit RSA public/private key pair is generated. Your alias and public key are registered with Aletheia Ware servers, and your private key is encrypted with your password and stored on your device - it does not leave your possession and therefore only you can decrypt your data - keep it safe!</p>
+
+            <p>To prevent loss of access to your data in case your device gets damaged, lost, or stolen, Aletheia Ware recommends provisioning multiple devices (see Export & Import below) and making a hard copy of your key pair and storing it in a secure location such as a fire-proof safe, or bank vault.</p>
+
+            <h2>1 & 2</h2>
+            <p></p>
+
+            <h2>3 & 4</h2>
+            <p></p>
+
+            <h2>5 & 6</h2>
+            <p></p>
+
+            <h2>Export & Import</h2>
+            <p>Your public/private key pair can be exported to other devices giving you easy access to your data from any supported device. Provisioning your key pair on multiple devices can help prevent loss of access to your data in case one of your devices gets damaged, lost, or stolen.</p>
+
+            <h2>Sample Usage</h2>
+            <p>Environment
+                <ul>
+                    <li>
+                        <pre><code>$> ALIAS=alice ./colour</code></pre>
+                        <p>Sets the alias for Colour to load from the keystore.</p>
+                    </li>
+                </ul>
+            </p>
+            <p>Commands
+                <ul>
+                    <li>
+                        <pre><code>$> ./colour init </code></pre>
+                        <p>Initializes environment, generates keys, and registers alias.</p>
+                    </li>
+                    <li>
+                        <pre><code>$> ./colour list </code></pre>
+                        <p>Displays a list of canvases in reverse-chronological order.</p>
+                    </li>
+                    <li>
+                        <pre><code>$> ./colour show [hash]</code></pre>
+                        <p>Displays the metadata of the canvas with the given hash.</p>
+                    </li>
+                    <li>
+                        <pre><code>$> ./colour showall [mode]</code></pre>
+                        <p>Shows all canvases with the given mode.</p>
+                    </li>
+                    <li>
+                        <pre><code>$> ./colour customer </code></pre>
+                        <p>Displays Stripe customer information.</p>
+                    </li>
+                    <li>
+                        <pre><code>$> ./colour subscription </code></pre>
+                        <p>Displays Stripe subscription information.</p>
+                    </li>
+                </ul>
+            </p>
+
+            <div class="footer">
+                <p>© 2019 Aletheia Ware LLC.  All rights reserved.</p>
+            </div>
+        </div>
+    </body>
+</html>

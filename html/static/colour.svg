@@ -1,0 +1,41 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" width="288" height="48">
+    <!-- Background -->
+    <rect fill="white" width="100%" height="100%"/>
+    <!-- Guides
+    <g fill="none" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5">
+        <polyline points="0,0 0,48" />
+        <polyline points="48,0 48,48" />
+        <polyline points="96,0 96,48" />
+        <polyline points="144,0 144,48" />
+        <polyline points="192,0 192,48" />
+        <polyline points="240,0 240,48" />
+        <polyline points="288,0 288,48" />
+    </g>
+    -->
+    <!-- Lines -->
+    <g fill="none" stroke="red" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+        <!-- C -->
+        <polyline points="42,6 6,24 42,42" />
+    </g>
+    <g fill="none" stroke="green" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+        <!-- O -->
+        <polyline points="72,6 54,24 72,42 90,24 72,6" />
+    </g>
+    <g fill="none" stroke="blue" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+        <!-- L -->
+        <polyline points="102,6 102,42 138,42" />
+    </g>
+    <g fill="none" stroke="green" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+        <!-- O -->
+        <polyline points="168,6 150,24 168,42 186,24 168,6" />
+    </g>
+    <g fill="none" stroke="yellow" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+        <!-- U -->
+        <polyline points="198,6 216,42 234,6" />
+    </g>
+    <g fill="none" stroke="blue" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+        <!-- R -->
+        <polyline points="246,42 246,6 282,6" />
+    </g>
+</svg>
