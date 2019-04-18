@@ -14,28 +14,59 @@
     </g>
     -->
     <!-- Lines -->
-    <g fill="none" stroke="red" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-        <!-- C -->
-        <polyline points="42,6 6,24 42,42" />
-    </g>
-    <g fill="none" stroke="green" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-        <!-- O -->
-        <polyline points="72,6 54,24 72,42 90,24 72,6" />
-    </g>
-    <g fill="none" stroke="blue" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-        <!-- L -->
-        <polyline points="102,6 102,42 138,42" />
-    </g>
-    <g fill="none" stroke="green" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-        <!-- O -->
-        <polyline points="168,6 150,24 168,42 186,24 168,6" />
-    </g>
-    <g fill="none" stroke="yellow" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-        <!-- U -->
-        <polyline points="198,6 216,42 234,6" />
-    </g>
-    <g fill="none" stroke="blue" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-        <!-- R -->
-        <polyline points="246,42 246,6 282,6" />
+    <g fill="none" stroke-linecap="round" stroke-linejoin="round" >
+        <g stroke-width="4">
+            <g stroke="#ffb3ba">
+                <!-- C -->
+                <polyline points="42,6 6,6 6,42 42,42" />
+            </g>
+            <g stroke="#baffc9">
+                <!-- O -->
+                <polyline points="54,6 54,42 90,42 90,6 54,6" />
+            </g>
+            <g stroke="#bae1ff">
+                <!-- L -->
+                <polyline points="102,6 102,42 138,42" />
+            </g>
+            <g stroke="#baffc9">
+                <!-- O -->
+                <polyline points="150,6 150,42 186,42 186,6 150,6" />
+            </g>
+            <g stroke="#ffffba">
+                <!-- U -->
+                <polyline points="198,6 198,42 234,42 234,6" />
+            </g>
+            <g stroke="#bae1ff">
+                <!-- R -->
+                <polyline points="246,42 246,6 282,6" />
+            </g>
+        </g>
+
+        <g stroke-width="1">
+            <g stroke="red">
+                <!-- C -->
+                <polyline points="42,6 6,6 6,42 42,42" />
+            </g>
+            <g stroke="green">
+                <!-- O -->
+                <polyline points="54,6 54,42 90,42 90,6 54,6" />
+            </g>
+            <g stroke="blue">
+                <!-- L -->
+                <polyline points="102,6 102,42 138,42" />
+            </g>
+            <g stroke="green">
+                <!-- O -->
+                <polyline points="150,6 150,42 186,42 186,6 150,6" />
+            </g>
+            <g stroke="yellow">
+                <!-- U -->
+                <polyline points="198,6 198,42 234,42 234,6" />
+            </g>
+            <g stroke="blue">
+                <!-- R -->
+                <polyline points="246,42 246,6 282,6" />
+            </g>
+        </g>
     </g>
 </svg>

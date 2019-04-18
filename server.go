@@ -18,22 +18,24 @@ package main
 
 import (
 	"bufio"
+	"bytes"
 	"crypto/rsa"
-	//"encoding/base64"
-	//"fmt"
+	"encoding/base64"
 	"github.com/AletheiaWareLLC/aliasgo"
 	"github.com/AletheiaWareLLC/bcgo"
 	"github.com/AletheiaWareLLC/bcnetgo"
+	"github.com/AletheiaWareLLC/colourgo"
 	"github.com/AletheiaWareLLC/financego"
-	//"github.com/AletheiaWareLLC/colourgo"
 	"github.com/golang/protobuf/proto"
 	"html/template"
+	"image"
+	"image/color"
+	"image/draw"
+	"image/jpeg"
 	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
-	"path"
-	//"time"
 )
 
 func main() {
@@ -62,6 +64,7 @@ func main() {
 	mux.HandleFunc("/alias-register", bcnetgo.HandleAliasRegister)
 	mux.HandleFunc("/block", bcnetgo.HandleBlock)
 	mux.HandleFunc("/channel", bcnetgo.HandleChannel)
+	mux.HandleFunc("/canvas", HandleCanvas)
 	mux.HandleFunc("/stripe-webhook", HandleStripeWebhook)
 	mux.HandleFunc("/colour-register", HandleRegister)
 	mux.HandleFunc("/colour-subscribe", HandleSubscribe)
@@ -71,7 +74,121 @@ func main() {
 		return
 	}
 	// Serve HTTPS Requests
-	http.ListenAndServeTLS(":443", path.Join(store, "fullchain.pem"), path.Join(store, "privkey.pem"), mux)
+	log.Println(http.ListenAndServeTLS(":443", path.Join(store, "fullchain.pem"), path.Join(store, "privkey.pem"), mux))
+}
+
+func HandleCanvas(w http.ResponseWriter, r *http.Request) {
+	log.Println(r.RemoteAddr, r.Proto, r.Method, r.Host, r.URL.Path)
+	switch r.Method {
+	case "GET":
+		query := r.URL.Query()
+		var canvas string
+		if results, ok := query["canvas"]; ok && len(results) == 1 {
+			canvas = results[0]
+		}
+		log.Println("Canvas", canvas)
+		canvases, err := bcgo.OpenChannel(colourgo.COLOUR_PREFIX_CANVAS + colourgo.GetYear())
+		if err != nil {
+			log.Println(err)
+			return
+		}
+		if len(canvas) > 0 {
+			hash, err := base64.RawURLEncoding.DecodeString(canvas)
+			if err != nil {
+				log.Println(err)
+				return
+			}
+			if err := colourgo.GetCanvas(canvases, "", nil, hash, func(entry *bcgo.BlockEntry, key []byte, c *colourgo.Canvas) error {
+				// TODO Draw image of canvas
+				i := image.NewRGBA(image.Rect(0, 0, int(c.Width), int(c.Height)))
+				blue := color.RGBA{0, 0, 255, 255}
+				draw.Draw(i, i.Bounds(), &image.Uniform{blue}, image.ZP, draw.Src)
+
+				var img image.Image = i
+				buffer := new(bytes.Buffer)
+				if err := jpeg.Encode(buffer, img, nil); err != nil {
+					return err
+				}
+
+				t, err := template.ParseFiles("html/template/canvas.html")
+				if err != nil {
+					return err
+				}
+				data := struct {
+					Hash      string
+					Timestamp string
+					Name      string
+					Width     uint32
+					Height    uint32
+					Depth     uint32
+					Mode      string
+					Image     string
+				}{
+					Hash:      canvas,
+					Timestamp: bcgo.TimestampToString(entry.Record.Timestamp),
+					Name:      c.Name,
+					Width:     c.Width,
+					Height:    c.Height,
+					Depth:     c.Depth,
+					Mode:      c.Mode.String(),
+					Image:     base64.StdEncoding.EncodeToString(buffer.Bytes()),
+				}
+				log.Println("Data", data)
+				err = t.Execute(w, data)
+				if err != nil {
+					return err
+				}
+				return nil
+			}); err != nil {
+				log.Println(err)
+				return
+			}
+		} else {
+			t, err := template.ParseFiles("html/template/canvas-list.html")
+			if err != nil {
+				log.Println(err)
+				return
+			}
+			type TemplateCanvas struct {
+				Hash      string
+				Name      string
+				Timestamp string
+				Width     uint32
+				Height    uint32
+				Depth     uint32
+				Mode      string
+			}
+			cs := make([]TemplateCanvas, 0)
+			if err := colourgo.GetCanvas(canvases, "", nil, nil, func(entry *bcgo.BlockEntry, key []byte, c *colourgo.Canvas) error {
+				cs = append(cs, TemplateCanvas{
+					Hash:      base64.RawURLEncoding.EncodeToString(entry.RecordHash),
+					Timestamp: bcgo.TimestampToString(entry.Record.Timestamp),
+					Name:      c.Name,
+					Width:     c.Width,
+					Height:    c.Height,
+					Depth:     c.Depth,
+					Mode:      c.Mode.String(),
+				})
+				return nil
+			}); err != nil {
+				log.Println(err)
+				return
+			}
+			data := struct {
+				Canvas []TemplateCanvas
+			}{
+				Canvas: cs,
+			}
+			log.Println("Data", data)
+			err = t.Execute(w, data)
+			if err != nil {
+				log.Println(err)
+				return
+			}
+		}
+	default:
+		log.Println("Unsupported method", r.Method)
+	}
 }
 
 func HandleStripeWebhook(w http.ResponseWriter, r *http.Request) {
